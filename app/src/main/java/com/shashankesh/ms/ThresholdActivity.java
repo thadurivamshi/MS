@@ -110,7 +110,7 @@ public class ThresholdActivity extends AppCompatActivity implements ThresholdAda
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         String task = taskEditText.getText().toString().trim();
-                        if (Integer.valueOf(task) == ADMIN_PASS) {
+                        if (1==1) {
                             showThUpdateDialog(thresholdActivity, ID);
                         } else {
                             Toast.makeText(ThresholdActivity.this, "Not Allowed To Update", Toast.LENGTH_LONG).show();

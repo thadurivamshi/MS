@@ -22,6 +22,7 @@ public class NewItemAddActivity extends AppCompatActivity implements SharedPrefe
     private TextInputLayout mItemName;
     private TextInputLayout mItemCount;
     private TextInputLayout mItemVendr;
+    private TextInputLayout mItemContact;
     private Button mCreateBtn;
     private SQLiteDatabase mDb;
     private String mThreshold;
@@ -36,6 +37,7 @@ public class NewItemAddActivity extends AppCompatActivity implements SharedPrefe
         mItemCount = (TextInputLayout) findViewById(R.id.new_item_count);
         mItemName = (TextInputLayout) findViewById(R.id.new_item_name);
         mItemVendr = (TextInputLayout) findViewById(R.id.new_item_vendr);
+        mItemContact = (TextInputLayout) findViewById(R.id.new_item_number);
         mCreateBtn = (Button) findViewById(R.id.new_itm_btn);
         //setting up the share threshold value
         setupSharedPreferences();
@@ -54,6 +56,7 @@ public class NewItemAddActivity extends AppCompatActivity implements SharedPrefe
                 String itemVendr = mItemVendr.getEditText().getText().toString().trim();
                 itemVendr = itemVendr.toLowerCase();
                 String itemCount = "";
+                String Contact=mItemContact.getEditText().getText().toString().trim();
                 try {
                     itemCount = mItemCount.getEditText().getText().toString().trim();
                 } catch (NumberFormatException ex) {
@@ -90,6 +93,7 @@ public class NewItemAddActivity extends AppCompatActivity implements SharedPrefe
         cv.put(ItemContract.ItemEntry.COLUMN_ITEM_COUNT, itemCount);
         cv.put(ItemContract.ItemEntry.COLUMN_ITEM_VENDOR, itemVendr);
         cv.put(ItemContract.ItemEntry.COLUMN_ITEM_TH, String.valueOf(Integer.valueOf(itemCount) / thDiv));
+
         return getContentResolver().insert(
                 ItemContract.ItemEntry.CONTENT_URI,
                 cv);
