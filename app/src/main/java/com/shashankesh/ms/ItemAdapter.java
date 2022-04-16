@@ -54,13 +54,17 @@ import com.shashankesh.ms.Data.ItemContract;
         String name = mCursor.getString(mCursor.getColumnIndex(ItemContract.ItemEntry.COLUMN_ITEM_NAME));
         //  Call getInt on the cursor to get the party size
         int itemCount = mCursor.getInt(mCursor.getColumnIndex(ItemContract.ItemEntry.COLUMN_ITEM_COUNT));
+        //int itemPrice = mCursor.getInt(mCursor.getColumnIndex(ItemContract.ItemEntry.COLUMN_ITEM_PRICE));
         String itemVndr = mCursor.getString(mCursor.getColumnIndex(ItemContract.ItemEntry.COLUMN_ITEM_VENDOR));
         //  Set the holder's nameTextView text to the guest's name
         // Display the guest name
         holder.nameTextView.setText(name);
         //  Set the holder's thTextView text to the party size
         // Display the party count
-        holder.itemSize.setText(String.format("Item Count : " + itemCount));
+        holder.itemSize.setText(String.format("Count : " + itemCount));
+
+        holder.itemPrice.setText(String.format("Price : " +173*((position%3)*(position*3)+1)));
+
         holder.itemVndr.setText(String.format("Vendor : "+itemVndr));
 
         //setting the itemView tag with the item id
@@ -82,7 +86,7 @@ import com.shashankesh.ms.Data.ItemContract;
         TextView nameTextView;
         TextView itemVndr;
         TextView itemSize;
-
+        TextView itemPrice;
         //TextView countTextView;
 
         /**
@@ -95,6 +99,7 @@ import com.shashankesh.ms.Data.ItemContract;
         public ItemAdapterViewHolder(View itemView) {
             super(itemView);
             nameTextView = (TextView) itemView.findViewById(R.id.item_name);
+            itemPrice = (TextView) itemView.findViewById(R.id.item_price);
             itemSize = (TextView) itemView.findViewById(R.id.item_count);
             itemVndr = (TextView) itemView.findViewById(R.id.item_vndr);
             itemView.setOnClickListener(this);

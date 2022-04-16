@@ -6,7 +6,7 @@ This application is about a small auto-mobile spare parts shop sells the spare p
 
 | StartActivity        | RegisterActivity           | LoginActivity  | MainActivity          | SettingActivity  |
 | ------------- |:-------------:|:-----:|:-------------:| -----:|
-| ![alt text](https://github.com/shashankeshsk/MS/blob/master/Image/StartActivity.jpg "Landing Page")| ![alt text](https://github.com/shashankeshsk/MS/blob/master/Image/RegisterActivity.png "Register Page") | ![alt text](https://github.com/shashankeshsk/MS/blob/master/Image/LoginActivity.png "Loging Page")|![alt text](https://github.com/shashankeshsk/MS/blob/master/Image/MainActivityWithMenue.png "MainActivity With Menue Page")|![alt text](https://github.com/shashankeshsk/MS/blob/master/Image/SettingActivity.png "Setting Page")|
+| ![alt text](https://github.com/vamshisk/MS/blob/master/Image/StartActivity.jpg "Landing Page")| ![alt text](https://github.com/vamshisk/MS/blob/master/Image/RegisterActivity.png "Register Page") | ![alt text](https://github.com/vamshisk/MS/blob/master/Image/LoginActivity.png "Loging Page")|![alt text](https://github.com/vamshisk/MS/blob/master/Image/MainActivityWithMenue.png "MainActivity With Menue Page")|![alt text](https://github.com/vamshisk/MS/blob/master/Image/SettingActivity.png "Setting Page")|
 <br/>  
 <br/>
 

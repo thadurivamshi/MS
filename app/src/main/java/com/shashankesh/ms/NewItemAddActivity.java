@@ -21,8 +21,10 @@ import com.shashankesh.ms.Data.ItemDbHelper;
 public class NewItemAddActivity extends AppCompatActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
     private TextInputLayout mItemName;
     private TextInputLayout mItemCount;
+    private TextInputLayout mItemPrice;
     private TextInputLayout mItemVendr;
     private TextInputLayout mItemContact;
+
     private Button mCreateBtn;
     private SQLiteDatabase mDb;
     private String mThreshold;
@@ -35,6 +37,7 @@ public class NewItemAddActivity extends AppCompatActivity implements SharedPrefe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_item_add);
         mItemCount = (TextInputLayout) findViewById(R.id.new_item_count);
+        mItemPrice = (TextInputLayout) findViewById(R.id.new_item_price);
         mItemName = (TextInputLayout) findViewById(R.id.new_item_name);
         mItemVendr = (TextInputLayout) findViewById(R.id.new_item_vendr);
         mItemContact = (TextInputLayout) findViewById(R.id.new_item_number);
@@ -57,6 +60,7 @@ public class NewItemAddActivity extends AppCompatActivity implements SharedPrefe
                 itemVendr = itemVendr.toLowerCase();
                 String itemCount = "";
                 String Contact=mItemContact.getEditText().getText().toString().trim();
+                String itemPrice = mItemPrice.getEditText().getText().toString().trim();
                 try {
                     itemCount = mItemCount.getEditText().getText().toString().trim();
                 } catch (NumberFormatException ex) {

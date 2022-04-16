@@ -12,12 +12,22 @@
         <entry key="..\:/MS/app/src/main/res/layout/activity_item_incrs_decrs.xml" value="0.25" />
         <entry key="..\:/MS/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/MS/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/MS/app/src/main/res/layout/activity_new_item_add.xml" value="0.15260416666666668" />
+        <entry key="..\:/MS/app/src/main/res/layout/activity_new_item_add.xml" value="0.2" />
+        <entry key="..\:/MS/app/src/main/res/layout/activity_print.xml" value="0.25" />
         <entry key="..\:/MS/app/src/main/res/layout/activity_register.xml" value="0.25" />
         <entry key="..\:/MS/app/src/main/res/layout/activity_start.xml" value="0.25" />
         <entry key="..\:/MS/app/src/main/res/layout/activity_th_update.xml" value="0.15260416666666668" />
         <entry key="..\:/MS/app/src/main/res/layout/activity_threshold.xml" value="0.264" />
         <entry key="..\:/MS/app/src/main/res/layout/activity_vendor.xml" value="0.15260416666666668" />
+        <entry key="..\:/MS/app/src/main/res/layout/dialog_box.xml" value="0.25" />
+        <entry key="..\:/MS/app/src/main/res/layout/item_list.xml" value="0.25" />
+        <entry key="..\:/MS/app/src/main/res/layout/print_item_list.xml" value="0.25" />
+        <entry key="..\:/MS/app/src/main/res/layout/settings_activity.xml" value="0.25" />
+        <entry key="..\:/MS/app/src/main/res/layout/threshold_list.xml" value="0.25" />
+        <entry key="..\:/MS/app/src/main/res/layout/vendor_list.xml" value="0.25" />
+        <entry key="..\:/MS/app/src/main/res/menu/item.xml" value="0.15260416666666668" />
+        <entry key="..\:/MS/app/src/main/res/menu/main.xml" value="0.15260416666666668" />
+        <entry key="..\:/MS/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2435" />
         <entry key="..\:/Users/tvams/StudioProjects/MS/app/src/main/res/layout/activity_graph.xml" value="0.18385416666666668" />
         <entry key="..\:/Users/tvams/StudioProjects/MS/app/src/main/res/layout/activity_item.xml" value="0.17798913043478262" />
         <entry key="..\:/Users/tvams/StudioProjects/MS/app/src/main/res/layout/activity_item_incrs_decrs.xml" value="0.1" />

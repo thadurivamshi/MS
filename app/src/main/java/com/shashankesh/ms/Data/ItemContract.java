@@ -30,5 +30,6 @@ import android.provider.BaseColumns;
         public static final String COLUMN_ITEM_TH= "item_th";
         public static final String COLUMN_ITEM_ORDER= "item_to_order";
         public static final String COLUMN_TIMESTAMP = "timestamp";
+        public static final String COLUMN_ITEM_PRICE = "item_price";
     }
 }

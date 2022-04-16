@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:background="@color/colorAccent"
-            android:text="update threshold"
+            android:text="threshold"
             android:textColor="#FFFFFF" />
 
         <Button
