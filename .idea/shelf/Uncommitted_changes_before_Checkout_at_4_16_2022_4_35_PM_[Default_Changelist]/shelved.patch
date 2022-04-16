@@ -1,0 +1,113 @@
+Index: app/src/main/java/com/shashankesh/ms/ItemAdapter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.shashankesh.ms;\r\n\r\nimport android.content.Context;\r\nimport android.database.Cursor;\r\nimport android.view.LayoutInflater;\r\nimport android.view.View;\r\nimport android.view.ViewGroup;\r\nimport android.widget.TextView;\r\n\r\nimport androidx.annotation.NonNull;\r\nimport androidx.recyclerview.widget.RecyclerView;\r\n\r\nimport com.shashankesh.ms.Data.ItemContract;\r\n\r\n/*\r\n *File ItemAdapter\r\n *Created by Shashankesh Upadhyay\r\n *on Sunday, November, 2019\r\n */public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterViewHolder> {\r\n\r\n    // Holds on to the cursor to display the itemlist\r\n    private Cursor mCursor;\r\n    private Context mContext;\r\n    private final ItemAdapterOnClickHandler mClickHandler;\r\n\r\n    public ItemAdapter(Context context, Cursor cursor, ItemAdapterOnClickHandler mClickHandler) {\r\n        this.mContext = context;\r\n        this.mCursor = cursor;\r\n        this.mClickHandler = mClickHandler;\r\n    }\r\n\r\n    public interface ItemAdapterOnClickHandler {\r\n        void onClick(int position);\r\n    }\r\n\r\n    @NonNull\r\n    @Override\r\n    public ItemAdapterViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {\r\n        // Get the RecyclerView item layout\r\n        int layoutIdForListItem = R.layout.item_list;\r\n        LayoutInflater inflater = LayoutInflater.from(mContext);\r\n        boolean shouldAttachToParentImmediately = false;\r\n        View view = inflater.inflate(layoutIdForListItem, parent, shouldAttachToParentImmediately);\r\n        return new ItemAdapterViewHolder(view);\r\n    }\r\n\r\n    @Override\r\n    public void onBindViewHolder(@NonNull ItemAdapterViewHolder holder, int position) {\r\n        //  Move the cursor to the passed in position, return if moveToPosition returns false\r\n        // Move the mCursor to the position of the item to be displayed\r\n        if (!mCursor.moveToPosition(position))\r\n            return; // bail if returned null\r\n        //  Call getString on the cursor to get the guest's name\r\n        String name = mCursor.getString(mCursor.getColumnIndex(ItemContract.ItemEntry.COLUMN_ITEM_NAME));\r\n        //  Call getInt on the cursor to get the party size\r\n        int itemCount = mCursor.getInt(mCursor.getColumnIndex(ItemContract.ItemEntry.COLUMN_ITEM_COUNT));\r\n        //int itemPrice = mCursor.getInt(mCursor.getColumnIndex(ItemContract.ItemEntry.COLUMN_ITEM_PRICE));\r\n        String itemVndr = mCursor.getString(mCursor.getColumnIndex(ItemContract.ItemEntry.COLUMN_ITEM_VENDOR));\r\n        //  Set the holder's nameTextView text to the guest's name\r\n        // Display the guest name\r\n        holder.nameTextView.setText(name);\r\n        //  Set the holder's thTextView text to the party size\r\n        // Display the party count\r\n        holder.itemSize.setText(String.format(\"Count : \" + itemCount));\r\n\r\n        holder.itemPrice.setText(String.format(\"Price : \" +173*((position%3)*(position*3)+1)));\r\n\r\n        holder.itemVndr.setText(String.format(\"Vendor : \"+itemVndr));\r\n\r\n        //setting the itemView tag with the item id\r\n        holder.itemView.setTag(mCursor.getInt(mCursor.getColumnIndex(ItemContract.ItemEntry._ID)));\r\n    }\r\n\r\n    @Override\r\n    public int getItemCount() {\r\n        //  Update the getItemCount to return the getCount of the cursor\r\n        return mCursor.getCount();\r\n    }\r\n\r\n    public void swapCursor(Cursor allItem) {\r\n        mCursor = allItem;\r\n        notifyDataSetChanged();\r\n    }\r\n\r\n    public class ItemAdapterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {\r\n        TextView nameTextView;\r\n        TextView itemVndr;\r\n        TextView itemSize;\r\n        TextView itemPrice;\r\n        //TextView countTextView;\r\n\r\n        /**\r\n         * Constructor for our ViewHolder. Within this constructor, we get a reference to our\r\n         * TextViews\r\n         *\r\n         * @param itemView The View that you inflated in\r\n         *                 {@link ItemAdapter#onCreateViewHolder(ViewGroup, int)}\r\n         */\r\n        public ItemAdapterViewHolder(View itemView) {\r\n            super(itemView);\r\n            nameTextView = (TextView) itemView.findViewById(R.id.item_name);\r\n            itemPrice = (TextView) itemView.findViewById(R.id.item_price);\r\n            itemSize = (TextView) itemView.findViewById(R.id.item_count);\r\n            itemVndr = (TextView) itemView.findViewById(R.id.item_vndr);\r\n            itemView.setOnClickListener(this);\r\n        }\r\n\r\n        @Override\r\n        public void onClick(View item) {\r\n            int adapterPosition = getAdapterPosition();\r\n            if(mCursor.moveToPosition(adapterPosition)) {\r\n                mClickHandler.onClick(mCursor.getInt(mCursor.getColumnIndex(ItemContract.ItemEntry._ID)));\r\n            }\r\n            //else Log.e(ItemActivity.class.getSimpleName(),\"Wrong Cursor click\");\r\n        }\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/shashankesh/ms/ItemAdapter.java b/app/src/main/java/com/shashankesh/ms/ItemAdapter.java
+--- a/app/src/main/java/com/shashankesh/ms/ItemAdapter.java	(revision d7093aec982bccadc807902f702261a8b163c96e)
++++ b/app/src/main/java/com/shashankesh/ms/ItemAdapter.java	(date 1650106867075)
+@@ -54,17 +54,13 @@
+         String name = mCursor.getString(mCursor.getColumnIndex(ItemContract.ItemEntry.COLUMN_ITEM_NAME));
+         //  Call getInt on the cursor to get the party size
+         int itemCount = mCursor.getInt(mCursor.getColumnIndex(ItemContract.ItemEntry.COLUMN_ITEM_COUNT));
+-        //int itemPrice = mCursor.getInt(mCursor.getColumnIndex(ItemContract.ItemEntry.COLUMN_ITEM_PRICE));
+         String itemVndr = mCursor.getString(mCursor.getColumnIndex(ItemContract.ItemEntry.COLUMN_ITEM_VENDOR));
+         //  Set the holder's nameTextView text to the guest's name
+         // Display the guest name
+         holder.nameTextView.setText(name);
+         //  Set the holder's thTextView text to the party size
+         // Display the party count
+-        holder.itemSize.setText(String.format("Count : " + itemCount));
+-
+-        holder.itemPrice.setText(String.format("Price : " +173*((position%3)*(position*3)+1)));
+-
++        holder.itemSize.setText(String.format("Item Count : " + itemCount));
+         holder.itemVndr.setText(String.format("Vendor : "+itemVndr));
+ 
+         //setting the itemView tag with the item id
+@@ -86,7 +82,7 @@
+         TextView nameTextView;
+         TextView itemVndr;
+         TextView itemSize;
+-        TextView itemPrice;
++
+         //TextView countTextView;
+ 
+         /**
+@@ -99,7 +95,6 @@
+         public ItemAdapterViewHolder(View itemView) {
+             super(itemView);
+             nameTextView = (TextView) itemView.findViewById(R.id.item_name);
+-            itemPrice = (TextView) itemView.findViewById(R.id.item_price);
+             itemSize = (TextView) itemView.findViewById(R.id.item_count);
+             itemVndr = (TextView) itemView.findViewById(R.id.item_vndr);
+             itemView.setOnClickListener(this);
+Index: app/src/main/java/com/shashankesh/ms/NewItemAddActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.shashankesh.ms;\r\n\r\nimport androidx.appcompat.app.AppCompatActivity;\r\nimport androidx.preference.PreferenceManager;\r\n\r\nimport android.content.ContentValues;\r\nimport android.content.SharedPreferences;\r\nimport android.database.Cursor;\r\nimport android.database.sqlite.SQLiteDatabase;\r\nimport android.net.Uri;\r\nimport android.os.Bundle;\r\nimport android.util.Log;\r\nimport android.view.View;\r\nimport android.widget.Button;\r\nimport android.widget.Toast;\r\n\r\nimport com.google.android.material.textfield.TextInputLayout;\r\nimport com.shashankesh.ms.Data.ItemContract;\r\nimport com.shashankesh.ms.Data.ItemDbHelper;\r\n\r\npublic class NewItemAddActivity extends AppCompatActivity implements SharedPreferences.OnSharedPreferenceChangeListener {\r\n    private TextInputLayout mItemName;\r\n    private TextInputLayout mItemCount;\r\n    private TextInputLayout mItemPrice;\r\n    private TextInputLayout mItemVendr;\r\n    private TextInputLayout mItemContact;\r\n\r\n    private Button mCreateBtn;\r\n    private SQLiteDatabase mDb;\r\n    private String mThreshold;\r\n\r\n    private final static String LOG_TAG = NewItemAddActivity.class.getSimpleName();\r\n\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_new_item_add);\r\n        mItemCount = (TextInputLayout) findViewById(R.id.new_item_count);\r\n        mItemPrice = (TextInputLayout) findViewById(R.id.new_item_price);\r\n        mItemName = (TextInputLayout) findViewById(R.id.new_item_name);\r\n        mItemVendr = (TextInputLayout) findViewById(R.id.new_item_vendr);\r\n        mItemContact = (TextInputLayout) findViewById(R.id.new_item_number);\r\n        mCreateBtn = (Button) findViewById(R.id.new_itm_btn);\r\n        //setting up the share threshold value\r\n        setupSharedPreferences();\r\n\r\n        // Create a DB helper (this will create the DB if run for the first time)\r\n        ItemDbHelper dbHelper = new ItemDbHelper(this);\r\n        // Keep a reference to the mDb until paused or killed. Get a writable database\r\n        // because you will be adding restaurant customers\r\n        mDb = dbHelper.getWritableDatabase();\r\n\r\n        mCreateBtn.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                String itemName = mItemName.getEditText().getText().toString().trim();\r\n                itemName = itemName.substring(0,1).toUpperCase()+ itemName.substring(1).toLowerCase();\r\n                String itemVendr = mItemVendr.getEditText().getText().toString().trim();\r\n                itemVendr = itemVendr.toLowerCase();\r\n                String itemCount = \"\";\r\n                String Contact=mItemContact.getEditText().getText().toString().trim();\r\n                String itemPrice = mItemPrice.getEditText().getText().toString().trim();\r\n                try {\r\n                    itemCount = mItemCount.getEditText().getText().toString().trim();\r\n                } catch (NumberFormatException ex) {\r\n                    // Make sure you surround the Integer.parseInt with a try catch and log any exception\r\n                    Log.e(LOG_TAG, \"Failed to parse party size text to number: \" + ex.getMessage());\r\n                }\r\n                if (itemName.equals(\"\") || itemCount.equals(\"\") || itemVendr.equals(\"\")) {\r\n                    Toast.makeText(NewItemAddActivity.this, \"All fields are required\", Toast.LENGTH_LONG).show();\r\n                    return;\r\n                }\r\n                if (itemCount.equals(\"0\")) {\r\n                    Toast.makeText(NewItemAddActivity.this, \"Item count cannot be 0\", Toast.LENGTH_LONG).show();\r\n                    return;\r\n                }\r\n\r\n                Uri uri = addItems(itemName, itemCount, itemVendr);\r\n                if (uri != null)\r\n                    finish();\r\n            }\r\n        });\r\n\r\n    }\r\n\r\n\r\n    private Uri addItems(String itemName, String itemCount, String itemVendr) {\r\n        int thDiv = Integer.valueOf(mThreshold);\r\n        if (checkForDuplicateItem(itemName, itemVendr)) {\r\n            Toast.makeText(NewItemAddActivity.this, \"Same Item there with Same Vendor is present,\" +\r\n                    \" Please rather Update this Item\", Toast.LENGTH_LONG).show();\r\n            return null;\r\n        }\r\n        ContentValues cv = new ContentValues();\r\n        cv.put(ItemContract.ItemEntry.COLUMN_ITEM_NAME, itemName);\r\n        cv.put(ItemContract.ItemEntry.COLUMN_ITEM_COUNT, itemCount);\r\n        cv.put(ItemContract.ItemEntry.COLUMN_ITEM_VENDOR, itemVendr);\r\n        cv.put(ItemContract.ItemEntry.COLUMN_ITEM_TH, String.valueOf(Integer.valueOf(itemCount) / thDiv));\r\n\r\n        return getContentResolver().insert(\r\n                ItemContract.ItemEntry.CONTENT_URI,\r\n                cv);\r\n    }\r\n\r\n    private boolean checkForDuplicateItem(String itemName, String itemVendr) {\r\n        Cursor cursor = getContentResolver().query(\r\n                ItemContract.ItemEntry.CONTENT_URI,\r\n                null,\r\n                ItemContract.ItemEntry.COLUMN_ITEM_NAME + \"=? AND \" + ItemContract.ItemEntry.COLUMN_ITEM_VENDOR + \"=?\",\r\n                new String[]{itemName, itemVendr},\r\n                null\r\n        );\r\n        if (cursor.getCount() > 0) {\r\n            return true;\r\n        }\r\n        return false;\r\n    }\r\n\r\n    @Override\r\n    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {\r\n        if (key.equals(getString(R.string.name))) {\r\n        } else if (key.equals(getString(R.string.th))) {\r\n            mThreshold = sharedPreferences.getString(key, \"3\");\r\n        }\r\n    }\r\n\r\n    private void setupSharedPreferences() {\r\n        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);\r\n        mThreshold = sharedPreferences.getString(getResources().getString(R.string.th), \"3\");\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/shashankesh/ms/NewItemAddActivity.java b/app/src/main/java/com/shashankesh/ms/NewItemAddActivity.java
+--- a/app/src/main/java/com/shashankesh/ms/NewItemAddActivity.java	(revision d7093aec982bccadc807902f702261a8b163c96e)
++++ b/app/src/main/java/com/shashankesh/ms/NewItemAddActivity.java	(date 1650106953324)
+@@ -21,10 +21,8 @@
+ public class NewItemAddActivity extends AppCompatActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
+     private TextInputLayout mItemName;
+     private TextInputLayout mItemCount;
+-    private TextInputLayout mItemPrice;
+     private TextInputLayout mItemVendr;
+     private TextInputLayout mItemContact;
+-
+     private Button mCreateBtn;
+     private SQLiteDatabase mDb;
+     private String mThreshold;
+@@ -37,7 +35,6 @@
+         super.onCreate(savedInstanceState);
+         setContentView(R.layout.activity_new_item_add);
+         mItemCount = (TextInputLayout) findViewById(R.id.new_item_count);
+-        mItemPrice = (TextInputLayout) findViewById(R.id.new_item_price);
+         mItemName = (TextInputLayout) findViewById(R.id.new_item_name);
+         mItemVendr = (TextInputLayout) findViewById(R.id.new_item_vendr);
+         mItemContact = (TextInputLayout) findViewById(R.id.new_item_number);
+@@ -60,7 +57,6 @@
+                 itemVendr = itemVendr.toLowerCase();
+                 String itemCount = "";
+                 String Contact=mItemContact.getEditText().getText().toString().trim();
+-                String itemPrice = mItemPrice.getEditText().getText().toString().trim();
+                 try {
+                     itemCount = mItemCount.getEditText().getText().toString().trim();
+                 } catch (NumberFormatException ex) {
+Index: app/src/main/res/layout/activity_new_item_add.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    android:orientation=\"vertical\"\r\n    tools:context=\".NewItemAddActivity\">\r\n    <View\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"12dp\"\r\n        android:id=\"@+id/toolbar\"\r\n        android:background=\"@color/colorPrimary\"/>\r\n    <com.google.android.material.textfield.TextInputLayout\r\n        android:id=\"@+id/new_item_name\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_margin=\"12dp\"\r\n        >\r\n\r\n        <com.google.android.material.textfield.TextInputEditText\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:hint=\"Item Name\" />\r\n    </com.google.android.material.textfield.TextInputLayout>\r\n\r\n    <com.google.android.material.textfield.TextInputLayout\r\n        android:id=\"@+id/new_item_count\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_margin=\"12dp\"\r\n        >\r\n\r\n        <com.google.android.material.textfield.TextInputEditText\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:hint=\"Item Count\"\r\n            android:inputType=\"number\" />\r\n    </com.google.android.material.textfield.TextInputLayout>\r\n    <com.google.android.material.textfield.TextInputLayout\r\n        android:id=\"@+id/new_item_price\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_margin=\"12dp\"\r\n        >\r\n\r\n        <com.google.android.material.textfield.TextInputEditText\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:hint=\"Item price\"\r\n            android:inputType=\"number\" />\r\n    </com.google.android.material.textfield.TextInputLayout>\r\n    <com.google.android.material.textfield.TextInputLayout\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:id=\"@+id/new_item_vendr\"\r\n        android:layout_margin=\"12dp\"\r\n        >\r\n\r\n        <com.google.android.material.textfield.TextInputEditText\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:hint=\"Vendor Name\" />\r\n    </com.google.android.material.textfield.TextInputLayout>\r\n    <com.google.android.material.textfield.TextInputLayout\r\n        android:id=\"@+id/new_item_number\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_margin=\"12dp\"\r\n        >\r\n\r\n        <com.google.android.material.textfield.TextInputEditText\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:hint=\"contact number\"\r\n            android:inputType=\"number\" />\r\n    </com.google.android.material.textfield.TextInputLayout>\r\n    <Button\r\n        android:id=\"@+id/new_itm_btn\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_margin=\"8dp\"\r\n        android:background=\"@color/colorAccent\"\r\n        android:text=\"Add Item\"\r\n        android:textColor=\"#FFFFFF\"\r\n        />\r\n</LinearLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_new_item_add.xml b/app/src/main/res/layout/activity_new_item_add.xml
+--- a/app/src/main/res/layout/activity_new_item_add.xml	(revision d7093aec982bccadc807902f702261a8b163c96e)
++++ b/app/src/main/res/layout/activity_new_item_add.xml	(date 1650106934305)
+@@ -38,19 +38,6 @@
+             android:inputType="number" />
+     </com.google.android.material.textfield.TextInputLayout>
+     <com.google.android.material.textfield.TextInputLayout
+-        android:id="@+id/new_item_price"
+-        android:layout_width="match_parent"
+-        android:layout_height="wrap_content"
+-        android:layout_margin="12dp"
+-        >
+-
+-        <com.google.android.material.textfield.TextInputEditText
+-            android:layout_width="match_parent"
+-            android:layout_height="wrap_content"
+-            android:hint="Item price"
+-            android:inputType="number" />
+-    </com.google.android.material.textfield.TextInputLayout>
+-    <com.google.android.material.textfield.TextInputLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:id="@+id/new_item_vendr"
