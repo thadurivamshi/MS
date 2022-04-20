@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
-        getSupportActionBar().setTitle("Motor Part Management");
+        getSupportActionBar().setTitle("Motor Part Management System");
         mAddItm = (Button)findViewById(R.id.addBtn);
         mThUpdate = (Button)findViewById(R.id.updtThBtn);
         mUpdtVndr = (Button)findViewById(R.id.updtVendBtn);

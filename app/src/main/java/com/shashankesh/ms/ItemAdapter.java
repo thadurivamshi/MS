@@ -63,7 +63,7 @@ import com.shashankesh.ms.Data.ItemContract;
         // Display the party count
         holder.itemSize.setText(String.format("Count : " + itemCount));
 
-        holder.itemPrice.setText(String.format("Price : " +173*((position%3)*(position*3)+1)));
+        holder.itemPrice.setText(String.format("Price : " +173*((position%3+1)*(position*3)+1)));
 
         holder.itemVndr.setText(String.format("Vendor : "+itemVndr));
 

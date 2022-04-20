@@ -14,8 +14,6 @@ import com.shashankesh.ms.Data.ItemContract;
 
 /*
  *File VendorAdapter
- *Created by Shashankesh Upadhyay
- *on Monday, November, 2019
  */public class VendorAdapter extends RecyclerView.Adapter<VendorAdapter.VendorAdapterViewHolder> {
 
     // Holds on to the cursor to display the itemlist

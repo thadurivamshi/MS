@@ -8,8 +8,6 @@ import androidx.annotation.Nullable;
 
 /*
  *File ItemDbHelper
- *Created by Shashankesh Upadhyay
- *on Monday, November, 2019
  */
 public class ItemDbHelper extends SQLiteOpenHelper {
 

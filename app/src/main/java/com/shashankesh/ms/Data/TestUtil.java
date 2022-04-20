@@ -9,8 +9,6 @@ import java.util.List;
 
 /*
  *File TestUtil
- *Created by Shashankesh Upadhyay
- *on Monday, November, 2019
  */public class TestUtil {
     
     public static void insertFakeData(){

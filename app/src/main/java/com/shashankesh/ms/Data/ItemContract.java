@@ -5,8 +5,6 @@ import android.provider.BaseColumns;
 
 /*
  *File ItemContract
- *Created by Shashankesh Upadhyay
- *on Monday, November, 2019
  */public class ItemContract {
     // The authority, which is how your code knows which Content Provider to access
     public static final String AUTHORITY = "com.shashankesh.ms";
